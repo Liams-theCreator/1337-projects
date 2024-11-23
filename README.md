@@ -1,10 +1,7 @@
-1337 Projects
+# Projects of 1337 cursus
 
-# Project: 0x1C. C - Makefiles
 
-## Projects
-
-| Task                   | File                       |
+| Project Name           | Directory                  |
 | ---------------------- | -------------------------- |
 | 0. LIBFT               | [0. LIBFT](./libft)        |
 | 1. PRINTF              | [1. PRINTF](./printf)      |
