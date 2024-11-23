@@ -6,5 +6,5 @@
 
 | Task                   | File                       |
 | ---------------------- | -------------------------- |
-| 0. LIBFT               | (./libft)                  |
-| 1. PRINTF              | (./printf)                 |
+| 0. LIBFT               | [0. LIBFT](./libft)        |
+| 1. PRINTF              | [1. PRINTF](./printf)      |
