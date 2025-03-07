@@ -9,3 +9,4 @@
 | 3. BORN2BEROOT         | [Born2beRoot](./Born2beRoot)         |
 | 4. PUSH_SWAP           | [push_swap](./push_swap)             |
 | 5. MINI_TALK           | [mini_talk](./mini_talk)             |
+| 6. SO_LONG             | [so_long](./so_long)                 |
