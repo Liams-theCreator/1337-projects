@@ -11,3 +11,4 @@
 | 5. MINI_TALK           | [mini_talk](./mini_talk)             |
 | 6. SO_LONG             | [so_long](./so_long)                 |
 | 7. MINISHELL           | [minishell](./minishell)             |
+| 8. PHILOSOPHERS        | [philosophers](./Philosophers)       |
