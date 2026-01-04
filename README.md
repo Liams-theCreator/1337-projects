@@ -13,3 +13,4 @@
 | 7. MINISHELL           | [minishell](./minishell)             |
 | 8. PHILOSOPHERS        | [philosophers](./Philosophers)       |
 | 9. CPP MODULES         | [CPP-Modules](./CPP-Modules)         |
+| 10. CUB3D              | [cub3d](./cub3d)                     |
