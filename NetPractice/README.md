@@ -1,3 +1,5 @@
+> Project documentation: [`DOCUMENTATION.md`](./DOCUMENTATION.md)
+
 # Core IP Networking Concepts
 
 1. **What is an IP address?**
