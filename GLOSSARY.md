@@ -134,3 +134,29 @@ instantiated, e.g. `AbsAnimal` and `AMateria`.
 
 **Interface** — A class with only pure virtual functions and no state, e.g. `ICharacter`
 and `IMateriaSource`.
+
+**Exception** — An error propagated with `throw` and caught with `try` / `catch`. In C++98
+a custom exception derives from `std::exception` and overrides
+`const char* what() const throw()`.
+
+**Template** — A class or function parameterised by type, instantiated by the compiler for
+each type used. In C++98 the definition must be visible where it is instantiated, which is
+why template code lives in headers.
+
+**RTTI / dynamic_cast** — Runtime type identification: `dynamic_cast` checks the real type
+of a polymorphic object, returning `NULL` for a failed pointer cast and throwing
+`std::bad_cast` for a failed reference cast.
+
+**reinterpret_cast** — A cast reinterpreting the bit pattern of a value, e.g. the pointer ↔
+`uintptr_t` round trip in `Serializer`.
+
+**STL** — The Standard Template Library: containers (`std::vector`, `std::map`,
+`std::stack`, `std::deque`, `std::list`), iterators and algorithms (`std::find`,
+`std::lower_bound`).
+
+**Iterator** — An object generalising a pointer, used to traverse a container between
+`begin()` and `end()`.
+
+**Ford–Johnson (merge-insertion) sort** — The sorting algorithm of `PmergeMe`: elements are
+paired, the larger ones are sorted recursively, and the smaller ones are binary-inserted in
+Jacobsthal order to minimise comparisons.

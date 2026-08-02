@@ -20,7 +20,7 @@ their own copy of those sources.
 | 4 | Graphics | `so_long`, `cub3d` | MiniLibX rendering: 2D tile maps with flood-fill validation, then a DDA ray-caster with textured walls and a minimap. |
 | 5 | Concurrency | `Philosophers` | POSIX threads, mutexes, starvation and deadlock avoidance under real-time constraints. |
 | 6 | Infrastructure | `Born2beRoot`, `NetPractice` | Virtual machine hardening (LVM, SSH, UFW, sudo policy) and IPv4 subnetting/routing configuration. |
-| 7 | OOP | `CPP-Modules` | C++98 object-oriented programming: classes, orthodox canonical form, inheritance, polymorphism and abstract interfaces. |
+| 7 | OOP and the STL | `CPP-Modules` | C++98 modules 00–09: classes, orthodox canonical form, inheritance, polymorphism, exceptions, casts, templates, containers and STL-based programs. |
 
 ## Project Interconnectivity Diagram
 
@@ -111,4 +111,6 @@ Terminology shared by all of them is collected in [`GLOSSARY.md`](./GLOSSARY.md)
 - **Infrastructure** — `Born2beRoot` covers virtualization and system hardening;
   `NetPractice` covers IPv4 addressing, masks and routing tables.
 - **Object-Oriented Programming** — `CPP-Modules` walks through C++98 classes, references,
-  fixed-point arithmetic, inheritance, polymorphism and abstract interfaces.
+  fixed-point arithmetic, inheritance, polymorphism and abstract interfaces, then
+  exceptions, the four casts, templates, containers and three STL-based programs
+  (`btc`, `RPN`, `PmergeMe`).
