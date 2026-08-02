@@ -1,5 +1,7 @@
 # Born2beRoot
 
+> Project documentation: [`DOCUMENTATION.md`](./DOCUMENTATION.md)
+
 This project's goal is to help you set up your `Virtual Machine` under specific instructions to get you close and close to know more about to world of virtualization.
 
 

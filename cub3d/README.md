@@ -1,6 +1,6 @@
 # cub3d
 
-[← Back to repository overview](../README.md) · Source: [`./cub3d`](../cub3d)
+[← Back to repository overview](../README.md) · [Glossary](../GLOSSARY.md)
 
 A first-person ray-casting engine in the spirit of Wolfenstein 3D, built on MiniLibX. It
 parses a `.cub` scene description, casts one ray per screen column with the DDA algorithm,
@@ -13,13 +13,13 @@ cd cub3d && make            # produces ./cub3d
 ./cub3d maps/valid/map1.cub
 ```
 
-Controls (see [`includes/macros.h`](../cub3d/includes/macros.h)): `W`/`S` move along the
+Controls (see [`includes/macros.h`](./includes/macros.h)): `W`/`S` move along the
 view direction, `A`/`D` strafe along the camera plane, `←`/`→` rotate, `ESC` quits.
 Window size is `900x800`, movement speed `0.05` and rotation step `0.05` rad.
 
 ## Scene file format
 
-Example [`maps/valid/map1.cub`](../cub3d/maps/valid/map1.cub):
+Example [`maps/valid/map1.cub`](./maps/valid/map1.cub):
 
 ```
 NO textures/north.xpm
@@ -39,9 +39,9 @@ C 200,30,0
 Header entries may appear in any order with arbitrary leading whitespace; `F` and `C` take
 `R,G,B` triplets. Map characters are `1` (wall), `0` (floor), space (void) and exactly one
 of `N`, `S`, `E`, `W` giving the player's spawn and facing.
-Invalid scenes for testing live in [`maps/not_valid`](../cub3d/maps/not_valid).
+Invalid scenes for testing live in [`maps/not_valid`](./maps/not_valid).
 
-## Parsing — [`src/parse`](../cub3d/src/parse)
+## Parsing — [`src/parse`](./src/parse)
 
 ```mermaid
 graph TD
@@ -56,7 +56,7 @@ graph TD
 ```
 
 The parsed configuration is stored in `t_header`
-([`includes/parse.h`](../cub3d/includes/parse.h)):
+([`includes/parse.h`](./includes/parse.h)):
 
 ```c
 typedef struct s_header
@@ -71,7 +71,7 @@ Failures route through `print_error` / `throw_exit`, which free the partially bu
 
 ## Rendering
 
-Core state — [`includes/cub3d.h`](../cub3d/includes/cub3d.h): `t_game` holds the MiniLibX
+Core state — [`includes/cub3d.h`](./includes/cub3d.h): `t_game` holds the MiniLibX
 handles, the map, the four wall textures (`textures[4]` indexed by `NORTH`, `SOUTH`,
 `WEST`, `EAST`), the minimap image buffer, the DDA scratch state and the player.
 
@@ -84,10 +84,10 @@ typedef struct s_player_info
 }	t_player;
 ```
 
-`init_player_dir` ([`src/main.c`](../cub3d/src/main.c)) maps the spawn character to a
+`init_player_dir` ([`src/main.c`](./src/main.c)) maps the spawn character to a
 direction/plane pair, e.g. `N` → `dir = (0, -1)`, `plane = (0.66, 0)`.
 
-### DDA ray casting — [`src/dda.c`](../cub3d/src/dda.c)
+### DDA ray casting — [`src/dda.c`](./src/dda.c)
 
 ```mermaid
 graph TD
@@ -110,12 +110,12 @@ player hugs a wall. Texture sampling is computed in `t_text` (`wall_x`, `text_x`
 `text_pos`) and written into the image buffer by `put_img` /`put_mlx_pixel`, so a whole
 frame is composed off-screen before being pushed to the window.
 
-### Vectors — [`src/vector2d.c`](../cub3d/src/vector2d.c)
+### Vectors — [`src/vector2d.c`](./src/vector2d.c)
 
-[`includes/vec2d.h`](../cub3d/includes/vec2d.h) defines a small `t_vec2` algebra
+[`includes/vec2d.h`](./includes/vec2d.h) defines a small `t_vec2` algebra
 (`vec_add`, `vec_sub`, `vec_scale`, `vec_dot`, `vec_normalize`, `vec_rotate`, …). Rotation
 of both `dir` and `plane` by the same angle is what turns the camera
-([`src/keys.c`](../cub3d/src/keys.c)).
+([`src/keys.c`](./src/keys.c)).
 
 ### Collision and minimap
 
@@ -128,11 +128,11 @@ if (game->map[(int)pos.y][(int)game->player.pos.x] != '1')
 	game->player.pos.y = pos.y;
 ```
 
-[`src/minimap.c`](../cub3d/src/minimap.c) overlays a scaled top-down view (`MINIMAP_SIZE`,
+[`src/minimap.c`](./src/minimap.c) overlays a scaled top-down view (`MINIMAP_SIZE`,
 `SCALE`) on the same image buffer.
 
 ## Cleanup
 
-[`src/destory_game.c`](../cub3d/src/destory_game.c) destroys the images, the window and the
+[`src/destory_game.c`](./src/destory_game.c) destroys the images, the window and the
 display, frees the map and the texture paths, then exits — wired to both the `ESC` key and
 the window-close hook.

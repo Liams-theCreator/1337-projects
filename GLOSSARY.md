@@ -1,13 +1,13 @@
 # Glossary
 
-[← Back to repository overview](../README.md)
+[← Back to repository overview](./README.md)
 
 Terminology shared across the projects in this repository.
 
 ## C and memory
 
-**libft** — The custom C library written in [`libft`](../libft) and reused by nearly every
-later project; see [Foundation Libraries](./foundation-libraries.md).
+**libft** — The custom C library written in [`libft`](./libft) and reused by nearly every
+later project; see [`libft/README.md`](./libft/README.md).
 
 **Static variable** — A variable whose lifetime spans the whole program but whose scope is
 limited to a function or file. `get_next_line` uses one to keep the unread remainder of a

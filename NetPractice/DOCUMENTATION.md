@@ -1,6 +1,6 @@
 # NetPractice
 
-[← Back to repository overview](../README.md) · Source: [`./NetPractice`](../NetPractice)
+[← Back to repository overview](../README.md) · [Glossary](../GLOSSARY.md)
 
 A networking exercise: ten levels of a browser-based simulator in which hosts, switches and
 routers must be given consistent IP addresses, subnet masks, default gateways and routes so
@@ -11,8 +11,8 @@ each level.
 
 | Path | Description |
 | ---- | ----------- |
-| [`configs/`](../NetPractice/configs) | Exported solutions, `level1.json` … `level10.json` |
-| [`README.md`](../NetPractice/README.md) | Study checklist of the networking concepts required |
+| [`configs/`](./configs) | Exported solutions, `level1.json` … `level10.json` |
+| [`README.md`](./README.md) | Study checklist of the networking concepts required |
 | `en.subject.pdf` | Project subject |
 
 ## Configuration format
