@@ -1,11 +1,11 @@
 # Born2beRoot
 
-[← Back to repository overview](../README.md) · Source: [`./Born2beRoot`](../Born2beRoot)
+[← Back to repository overview](../README.md) · [Glossary](../GLOSSARY.md)
 
 A system administration project: build and harden a virtual machine under strict rules —
 no graphical interface, encrypted LVM partitioning, a restrictive `sudo` policy, a password
 policy, a firewall and a monitoring script. The directory holds the subject and the study
-notes ([`Born2beRoot/README.md`](../Born2beRoot/README.md)); the deliverable itself is the
+notes ([`Born2beRoot/README.md`](./README.md)); the deliverable itself is the
 VM's `signature.txt`.
 
 ## Scope
@@ -73,5 +73,5 @@ reporting architecture and kernel, physical and virtual CPU counts, memory and d
 CPU load, last boot time, whether LVM is active, active TCP connections, logged-in users,
 the IPv4 and MAC addresses, and the number of `sudo` commands executed.
 
-The upstream notes in [`Born2beRoot/README.md`](../Born2beRoot/README.md) collect the
+The upstream notes in [`Born2beRoot/README.md`](./README.md) collect the
 reference articles and videos used for each of these topics, plus the defence questions.

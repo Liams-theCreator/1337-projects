@@ -1,6 +1,6 @@
 # mini_talk
 
-[← Back to repository overview](../README.md) · Source: [`./mini_talk`](../mini_talk)
+[← Back to repository overview](../README.md) · [Glossary](../GLOSSARY.md)
 
 A client/server pair that transmits strings between two processes using only the two
 user-defined UNIX signals, `SIGUSR1` and `SIGUSR2`. There is no shared memory, socket or
@@ -14,9 +14,9 @@ cd mini_talk && make        # builds ./server and ./client
 ./client <server_pid> "message"
 ```
 
-`make bonus` builds the bonus variants ([`server_bonus.c`](../mini_talk/server_bonus.c),
-[`client_bonus.c`](../mini_talk/client_bonus.c)), which add acknowledgement handling.
-Output uses the vendored [`ft_printf`](../mini_talk/printf).
+`make bonus` builds the bonus variants ([`server_bonus.c`](./server_bonus.c),
+[`client_bonus.c`](./client_bonus.c)), which add acknowledgement handling.
+Output uses the vendored [`ft_printf`](./printf).
 
 ## Protocol
 
@@ -35,7 +35,7 @@ sequenceDiagram
     Server->>Server: "byte == 0 → print newline"
 ```
 
-## Client — [`client.c`](../mini_talk/client.c)
+## Client — [`client.c`](./client.c)
 
 `send_bit` walks a byte from the most significant bit down to bit 0:
 
@@ -53,7 +53,7 @@ After the message, `send_null` sends eight `SIGUSR1` to transmit the terminating
 
 Invalid usage (`argc != 3`, empty message, negative PID) returns `-1` immediately.
 
-## Server — [`server.c`](../mini_talk/server.c)
+## Server — [`server.c`](./server.c)
 
 The handler is installed with `sigaction` and the `SA_SIGINFO` flag so that
 `siginfo_t->si_pid` identifies the sender:

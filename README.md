@@ -74,38 +74,26 @@ graph TD
 
 ## Navigation and Directory Structure
 
-| Project Name           | Directory                            |
-| ---------------------- | ------------------------------------ |
-| 0. LIBFT               | [libft](./libft)                     |
-| 1. PRINTF              | [printf](./printf)                   |
-| 2. GET_NEXT_LINE       | [get_next_line](./get_next_line)     |
-| 3. BORN2BEROOT         | [Born2beRoot](./Born2beRoot)         |
-| 4. PUSH_SWAP           | [push_swap](./push_swap)             |
-| 5. MINI_TALK           | [mini_talk](./mini_talk)             |
-| 6. SO_LONG             | [so_long](./so_long)                 |
-| 7. MINISHELL           | [minishell](./minishell)             |
-| 8. PHILOSOPHERS        | [philosophers](./Philosophers)       |
-| 9. CPP MODULES         | [CPP-Modules](./CPP-Modules)         |
-| 10. CUB3D              | [cub3d](./cub3d)                     |
-| 11. NETPRACTICE        | [NetPractice](./NetPractice)         |
+Each project's documentation lives inside its own directory, so opening the folder shows
+the write-up next to the sources. Projects that already had a `README.md` keep it and carry
+the deep dive in `DOCUMENTATION.md`.
 
-## Documentation
+| Project Name           | Directory                            | Documentation                                              |
+| ---------------------- | ------------------------------------ | ---------------------------------------------------------- |
+| 0. LIBFT               | [libft](./libft)                     | [libft/README.md](./libft/README.md)                        |
+| 1. PRINTF              | [printf](./printf)                   | [printf/README.md](./printf/README.md)                      |
+| 2. GET_NEXT_LINE       | [get_next_line](./get_next_line)     | [get_next_line/README.md](./get_next_line/README.md)        |
+| 3. BORN2BEROOT         | [Born2beRoot](./Born2beRoot)         | [Born2beRoot/DOCUMENTATION.md](./Born2beRoot/DOCUMENTATION.md) |
+| 4. PUSH_SWAP           | [push_swap](./push_swap)             | [push_swap/README.md](./push_swap/README.md)                |
+| 5. MINI_TALK           | [mini_talk](./mini_talk)             | [mini_talk/README.md](./mini_talk/README.md)                |
+| 6. SO_LONG             | [so_long](./so_long)                 | [so_long/README.md](./so_long/README.md)                    |
+| 7. MINISHELL           | [minishell](./minishell)             | [minishell/README.md](./minishell/README.md)                |
+| 8. PHILOSOPHERS        | [philosophers](./Philosophers)       | [Philosophers/README.md](./Philosophers/README.md)          |
+| 9. CPP MODULES         | [CPP-Modules](./CPP-Modules)         | [CPP-Modules/DOCUMENTATION.md](./CPP-Modules/DOCUMENTATION.md) |
+| 10. CUB3D              | [cub3d](./cub3d)                     | [cub3d/README.md](./cub3d/README.md)                        |
+| 11. NETPRACTICE        | [NetPractice](./NetPractice)         | [NetPractice/DOCUMENTATION.md](./NetPractice/DOCUMENTATION.md) |
 
-Per-project deep dives live in [`docs/`](./docs):
-
-| Page | Covers |
-| ---- | ------ |
-| [Foundation Libraries](./docs/foundation-libraries.md) | `libft`, `ft_printf`, `get_next_line` |
-| [push_swap](./docs/push_swap.md) | Stack sorting algorithm and operation set |
-| [mini_talk](./docs/mini_talk.md) | Signal-based client/server bit protocol |
-| [so_long](./docs/so_long.md) | 2D tile game, map validation, MiniLibX rendering |
-| [minishell](./docs/minishell.md) | Lexer, parser, expansion, redirections, execution |
-| [Philosophers](./docs/philosophers.md) | Threads, mutexes, death watcher |
-| [cub3d](./docs/cub3d.md) | `.cub` parsing, DDA ray-casting, textures, minimap |
-| [CPP Modules](./docs/cpp-modules.md) | C++98 OOP modules 00–04 |
-| [Born2beRoot](./docs/born2beroot.md) | VM setup, LVM, SSH, UFW, sudo policy |
-| [NetPractice](./docs/netpractice.md) | Subnetting, routing, level configurations |
-| [Glossary](./docs/glossary.md) | Shared terminology across the cursus |
+Terminology shared by all of them is collected in [`GLOSSARY.md`](./GLOSSARY.md).
 
 ## Major Project Sections
 

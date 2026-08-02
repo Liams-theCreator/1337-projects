@@ -1,6 +1,6 @@
 # Philosophers
 
-[← Back to repository overview](../README.md) · Source: [`./Philosophers`](../Philosophers)
+[← Back to repository overview](../README.md) · [Glossary](../GLOSSARY.md)
 
 An implementation of the dining philosophers problem: one thread per philosopher, one
 mutex per fork, and a monitoring thread that detects starvation. The project is about
@@ -14,10 +14,10 @@ cd Philosophers && make     # produces ./philo
 ./philo 5 800 200 200
 ```
 
-All times are in milliseconds. `ft_parse` ([`parse.c`](../Philosophers/parse.c)) rejects
+All times are in milliseconds. `ft_parse` ([`parse.c`](./parse.c)) rejects
 non-numeric and non-positive values, and `ft_man` prints usage.
 
-## Structures — [`philo.h`](../Philosophers/philo.h)
+## Structures — [`philo.h`](./philo.h)
 
 ```c
 typedef struct s_philo
@@ -74,7 +74,7 @@ graph TD
     pn --> join
 ```
 
-## Philosopher routine — [`philo.c`](../Philosophers/philo.c), [`routine.c`](../Philosophers/routine.c)
+## Philosopher routine — [`philo.c`](./philo.c), [`routine.c`](./routine.c)
 
 ```mermaid
 graph LR
@@ -103,7 +103,7 @@ blocked once the simulation ends.
 The single-philosopher case is special-cased in `single_philo_routine`: with one fork
 available, the philosopher takes it, waits `time_to_die` and dies.
 
-## Watcher — [`watcher.c`](../Philosophers/watcher.c)
+## Watcher — [`watcher.c`](./watcher.c)
 
 The watcher polls every philosopher:
 
@@ -119,7 +119,7 @@ printing so no other thread can log an action after the death line.
 
 ## Cleanup
 
-[`memory_free.c`](../Philosophers/memory_free.c) destroys every mutex
+[`memory_free.c`](./memory_free.c) destroys every mutex
 (`cleanup_mutex`) and frees the philosopher and fork arrays; `join_threads`
-([`threads.c`](../Philosophers/threads.c)) joins all worker threads plus the watcher
+([`threads.c`](./threads.c)) joins all worker threads plus the watcher
 before cleanup so no mutex is destroyed while still in use.

@@ -1,6 +1,6 @@
 # so_long
 
-[← Back to repository overview](../README.md) · Source: [`./so_long`](../so_long)
+[← Back to repository overview](../README.md) · [Glossary](../GLOSSARY.md)
 
 A small 2D tile-based game rendered with MiniLibX: the player walks a `.ber` map,
 collects every item, then reaches the exit. The bulk of the project is not the game loop
@@ -13,14 +13,14 @@ cd so_long && make          # produces ./so_long
 ./so_long maps/map1.ber
 ```
 
-The project vendors its own dependencies under [`so_long/srcs`](../so_long/srcs):
-[`libft`](../so_long/srcs/libft), [`printf`](../so_long/srcs/printf) and the multi-fd
-[`gnl`](../so_long/srcs/gnl) used to read the map file line by line.
+The project vendors its own dependencies under [`so_long/srcs`](./srcs):
+[`libft`](./srcs/libft), [`printf`](./srcs/printf) and the multi-fd
+[`gnl`](./srcs/gnl) used to read the map file line by line.
 
 ## Map format
 
-Maps live in [`so_long/maps`](../so_long/maps). Example
-([`map1.ber`](../so_long/maps/map1.ber)):
+Maps live in [`so_long/maps`](./maps). Example
+([`map1.ber`](./maps/map1.ber)):
 
 ```
 1111111111111
@@ -40,7 +40,7 @@ Maps live in [`so_long/maps`](../so_long/maps). Example
 
 Deliberately broken maps are provided as `map_error*.ber` for testing the parser.
 
-## Core structures — [`so_long.h`](../so_long/so_long.h)
+## Core structures — [`so_long.h`](./so_long.h)
 
 ```c
 typedef struct elems { int player; int col; int exit; }	t_elems;
@@ -72,17 +72,17 @@ graph TD
     I -- "yes" --> K["start_game"]
 ```
 
-`flood_fill` ([`parser/parser_path.c`](../so_long/parser/parser_path.c)) runs on a
+`flood_fill` ([`parser/parser_path.c`](./parser/parser_path.c)) runs on a
 duplicate of the map produced by `copy_map`/`copying`, so the recursive fill can overwrite
 tiles freely while decrementing the collectible and exit counters. Reachability is
 confirmed only if every counter reaches zero.
 
 Errors funnel through `ft_error` / `throw_error`
-([`parser/errors.c`](../so_long/parser/errors.c)), which free the map array before exiting.
+([`parser/errors.c`](./parser/errors.c)), which free the map array before exiting.
 
-## Rendering and game loop — [`game/game.c`](../so_long/game/game.c)
+## Rendering and game loop — [`game/game.c`](./game/game.c)
 
-Textures are XPM files in [`so_long/textures`](../so_long/textures) (`wall`, `ground`,
+Textures are XPM files in [`so_long/textures`](./textures) (`wall`, `ground`,
 `player`, `key`, `door`) loaded once by `init_textures`. `render_textures` iterates the map
 and calls `mlx_put_image_to_window` at a fixed 40-pixel tile pitch:
 
