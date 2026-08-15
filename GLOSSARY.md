@@ -118,6 +118,36 @@ root login disabled.
 **UFW** — Uncomplicated Firewall, the front-end used to deny all incoming traffic except
 the allowed port.
 
+**TCP socket** — A bidirectional byte-stream endpoint. A server socket is `bind`-ed to a
+port, turned passive with `listen`, and produces one new socket per client through
+`accept`; `IRC` uses one per connected client.
+
+**Non-blocking socket** — A socket set to `O_NONBLOCK` with `fcntl`, on which `recv` and
+`send` return immediately instead of waiting, so one slow client cannot stall the server.
+
+**poll** — An I/O multiplexing call watching an array of `struct pollfd` and reporting which
+descriptors are readable (`POLLIN`), writable (`POLLOUT`) or broken (`POLLHUP`, `POLLERR`).
+The whole of `IRC` runs in one `poll()` loop, in a single process without threads.
+
+**SO_REUSEADDR** — Socket option allowing a listening socket to rebind a port still in
+`TIME_WAIT`, so the server can be restarted immediately.
+
+**Message framing** — Recovering discrete messages from a byte stream. IRC lines end with
+`\r\n`, so `IRC` buffers each client's input and only executes a line once the delimiter
+has arrived.
+
+**IRC** — Internet Relay Chat, the text protocol of RFC 1459 / RFC 2812: a client
+registers with `PASS` / `NICK` / `USER`, then joins channels (`#name`) and sends `PRIVMSG`.
+
+**Numeric reply** — A three-digit server response code, e.g. `001 RPL_WELCOME`,
+`433 ERR_NICKNAMEINUSE`, `482 ERR_CHANOPRIVSNEEDED`.
+
+**Channel operator** — A channel member holding privileges (`KICK`, `INVITE`, `TOPIC` under
+`+t`, `MODE`); marked `@` in the names list.
+
+**Channel mode** — A per-channel flag: `+i` invite-only, `+t` topic restricted to
+operators, `+k` key required to join, `+o` grant operator, `+l` member limit.
+
 ## C++
 
 **Orthodox canonical form** — The four members every C++98 class should define: default

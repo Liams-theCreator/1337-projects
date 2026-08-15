@@ -2,6 +2,8 @@
 
 # ft_irc — IRC Server
 
+[← Back to repository overview](../README.md) · [Internals](./DOCUMENTATION.md) · [Glossary](../GLOSSARY.md)
+
 ## Description
 
 `ft_irc` is an IRC (Internet Relay Chat) server written from scratch in C++98.
@@ -65,13 +67,14 @@ output buffer and `POLLOUT` is enabled for that socket.
 
 ### Compilation
 
+From the root of this repository:
+
 ```bash
-git clone https://github.com/AadelAferyad/IRC-server.git
-cd IRC-server
+cd IRC
 make
 ```
 
-This produces the `ircserv` binary at the root of the repository.
+This produces the `ircserv` binary in `IRC/`.
 The project compiles with `-Wall -Wextra -Werror -std=c++98`.
 
 Other rules:

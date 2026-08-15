@@ -21,6 +21,10 @@ their own copy of those sources.
 | 5 | Concurrency | `Philosophers` | POSIX threads, mutexes, starvation and deadlock avoidance under real-time constraints. |
 | 6 | Infrastructure | `Born2beRoot`, `NetPractice` | Virtual machine hardening (LVM, SSH, UFW, sudo policy) and IPv4 subnetting/routing configuration. |
 | 7 | OOP and the STL | `CPP-Modules` | C++98 modules 00–09: classes, orthodox canonical form, inheritance, polymorphism, exceptions, casts, templates, containers and STL-based programs. |
+| 8 | Networking | `IRC` | A C++98 IRC server: TCP sockets, non-blocking I/O, a single `poll()` event loop and the RFC 1459 / RFC 2812 command set. |
+
+`IRC` closes the loop: it combines the socket and event-loop work of the Unix tier with the
+C++98 tools introduced in `CPP-Modules`.
 
 ## Project Interconnectivity Diagram
 
@@ -69,7 +73,9 @@ graph TD
     MLX --> so_long2["so_long: tile rendering, key hooks"]
     MLX --> cub3d2["cub3d: DDA ray-casting, XPM textures"]
     NET --> netpractice["NetPractice: masks, gateways, routes"]
+    NET --> irc["IRC: TCP sockets, poll(), RFC 1459"]
     C --> cpp["CPP-Modules: C++98 OOP"]
+    cpp --> irc
 ```
 
 ## Navigation and Directory Structure
@@ -92,6 +98,7 @@ the deep dive in `DOCUMENTATION.md`.
 | 9. CPP MODULES         | [CPP-Modules](./CPP-Modules)         | [CPP-Modules/DOCUMENTATION.md](./CPP-Modules/DOCUMENTATION.md) |
 | 10. CUB3D              | [cub3d](./cub3d)                     | [cub3d/README.md](./cub3d/README.md)                        |
 | 11. NETPRACTICE        | [NetPractice](./NetPractice)         | [NetPractice/DOCUMENTATION.md](./NetPractice/DOCUMENTATION.md) |
+| 12. IRC                | [IRC](./IRC)                         | [IRC/DOCUMENTATION.md](./IRC/DOCUMENTATION.md) · [IRC/README.md](./IRC/README.md) |
 
 Terminology shared by all of them is collected in [`GLOSSARY.md`](./GLOSSARY.md).
 
@@ -110,6 +117,10 @@ Terminology shared by all of them is collected in [`GLOSSARY.md`](./GLOSSARY.md)
   thread per philosopher, per-fork mutexes and a monitoring thread.
 - **Infrastructure** — `Born2beRoot` covers virtualization and system hardening;
   `NetPractice` covers IPv4 addressing, masks and routing tables.
+- **Networking** — `IRC` implements an IRC server in C++98: one process, no threads, every
+  socket non-blocking and multiplexed by a single `poll()` loop, with per-client input and
+  output buffers, `\r\n` message framing, table-driven command dispatch, channels with
+  operator privileges and modes (`i`, `t`, `k`, `o`, `l`), plus a help bot as bonus.
 - **Object-Oriented Programming** — `CPP-Modules` walks through C++98 classes, references,
   fixed-point arithmetic, inheritance, polymorphism and abstract interfaces, then
   exceptions, the four casts, templates, containers and three STL-based programs
