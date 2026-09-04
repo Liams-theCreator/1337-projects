@@ -19,7 +19,7 @@ their own copy of those sources.
 | 3 | Unix Systems | `mini_talk`, `minishell` | Process creation, signals as an IPC channel, pipes, file descriptors, redirections and environment management. |
 | 4 | Graphics | `so_long`, `cub3d` | MiniLibX rendering: 2D tile maps with flood-fill validation, then a DDA ray-caster with textured walls and a minimap. |
 | 5 | Concurrency | `Philosophers` | POSIX threads, mutexes, starvation and deadlock avoidance under real-time constraints. |
-| 6 | Infrastructure | `Born2beRoot`, `NetPractice` | Virtual machine hardening (LVM, SSH, UFW, sudo policy) and IPv4 subnetting/routing configuration. |
+| 6 | Infrastructure | `Born2beRoot`, `NetPractice`, `Inception` | Virtual machine hardening (LVM, SSH, UFW, sudo policy), IPv4 subnetting/routing configuration, and a Docker Compose web stack (NGINX TLS, WordPress/PHP-FPM, MariaDB) built from custom Debian images. |
 | 7 | OOP and the STL | `CPP-Modules` | C++98 modules 00–09: classes, orthodox canonical form, inheritance, polymorphism, exceptions, casts, templates, containers and STL-based programs. |
 | 8 | Networking | `IRC` | A C++98 IRC server: TCP sockets, non-blocking I/O, a single `poll()` event loop and the RFC 1459 / RFC 2812 command set. |
 
@@ -63,6 +63,7 @@ graph TD
     THREADS["pthreads"]
     SIGNALS["UNIX signals"]
     NET["IPv4 / subnetting"]
+    DOCKER["Docker / Compose"]
 
     C --> POSIX
     POSIX --> minishell["minishell: fork, execve, pipe, dup2, wait"]
@@ -74,6 +75,7 @@ graph TD
     MLX --> cub3d2["cub3d: DDA ray-casting, XPM textures"]
     NET --> netpractice["NetPractice: masks, gateways, routes"]
     NET --> irc["IRC: TCP sockets, poll(), RFC 1459"]
+    DOCKER --> inception["Inception: Dockerfiles, bridge network, volumes, secrets"]
     C --> cpp["CPP-Modules: C++98 OOP"]
     cpp --> irc
 ```
@@ -99,6 +101,7 @@ the deep dive in `DOCUMENTATION.md`.
 | 10. CUB3D              | [cub3d](./cub3d)                     | [cub3d/README.md](./cub3d/README.md)                        |
 | 11. NETPRACTICE        | [NetPractice](./NetPractice)         | [NetPractice/DOCUMENTATION.md](./NetPractice/DOCUMENTATION.md) |
 | 12. IRC                | [IRC](./IRC)                         | [IRC/DOCUMENTATION.md](./IRC/DOCUMENTATION.md) · [IRC/README.md](./IRC/README.md) |
+| 13. INCEPTION          | [Inception](./Inception)             | [Inception/README.md](./Inception/README.md) · [USER_DOC.md](./Inception/USER_DOC.md) · [DEV_DOC.md](./Inception/DEV_DOC.md) |
 
 Terminology shared by all of them is collected in [`GLOSSARY.md`](./GLOSSARY.md).
 
@@ -116,7 +119,10 @@ Terminology shared by all of them is collected in [`GLOSSARY.md`](./GLOSSARY.md)
 - **Concurrency** — `Philosophers` simulates the dining philosophers problem with one
   thread per philosopher, per-fork mutexes and a monitoring thread.
 - **Infrastructure** — `Born2beRoot` covers virtualization and system hardening;
-  `NetPractice` covers IPv4 addressing, masks and routing tables.
+  `NetPractice` covers IPv4 addressing, masks and routing tables; `Inception` builds a
+  TLS-fronted WordPress + MariaDB stack with Docker Compose inside a Debian VM — every
+  service from its own Dockerfile, a private bridge network, named volumes and Docker
+  secrets, plus Redis, FTP, a static site, Adminer and Portainer as bonus services.
 - **Networking** — `IRC` implements an IRC server in C++98: one process, no threads, every
   socket non-blocking and multiplexed by a single `poll()` loop, with per-client input and
   output buffers, `\r\n` message framing, table-driven command dispatch, channels with
