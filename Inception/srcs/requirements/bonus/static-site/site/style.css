@@ -1,0 +1,51 @@
+:root {
+  --ink: #10202d;
+  --ink-soft: #5c6a73;
+  --paper: #f3f4ef;
+  --panel: #ffffff;
+  --line: #d9dedc;
+  --accent: #ea7d2a;
+  --dark: #122633;
+  --mint: #dceae2;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; line-height: 1.55; }
+
+.hero { padding: 5.5rem max(1.5rem, calc((100vw - 70rem) / 2)); background: var(--dark); color: #fff; }
+.eyebrow, .section-label { margin: 0 0 .75rem; color: var(--accent); font-size: .76rem; font-weight: 700; letter-spacing: .12em; }
+h1, h2, h3 { line-height: 1.08; }
+h1 { max-width: 55rem; margin: 0; font-family: Georgia, serif; font-size: clamp(2.6rem, 7vw, 5.8rem); font-weight: 400; }
+.hero-copy { max-width: 44rem; margin: 1.4rem 0 2rem; color: #c7d4d9; font-size: 1.08rem; }
+
+main, footer { max-width: 70rem; margin: 0 auto; padding-inline: 1.5rem; }
+.section { padding: 5rem 0; border-bottom: 1px solid var(--line); }
+.intro { max-width: 58rem; }
+h2 { margin: 0; font-family: Georgia, serif; font-size: clamp(2rem, 4vw, 3.35rem); font-weight: 400; }
+.intro > p:last-child { max-width: 48rem; color: var(--ink-soft); font-size: 1.08rem; }
+.section-heading { display: grid; gap: .55rem; margin-bottom: 2rem; }
+
+.flow { display: flex; align-items: stretch; gap: .65rem; overflow-x: auto; padding-bottom: .5rem; }
+.flow-card { min-width: 11rem; flex: 1; padding: 1.35rem; border: 1px solid var(--line); background: var(--panel); }
+.flow-card.public { border-top: 5px solid var(--accent); }
+.flow-card.private { border-top: 5px solid #5b8872; }
+.flow-card span { color: var(--ink-soft); font-weight: 700; }
+.flow-card h3 { margin: .7rem 0 .35rem; }
+.flow-card p { margin: 0; color: var(--ink-soft); font-size: .94rem; }
+.arrow { display: grid; place-items: center; color: var(--accent); font-size: 1.8rem; }
+
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.service-grid article { padding: 1.5rem; background: var(--panel); }
+.service-grid h3 { margin: 0 0 .5rem; }
+.service-grid p { margin: 0; color: var(--ink-soft); }
+
+footer { padding-top: 2rem; padding-bottom: 3rem; color: var(--ink-soft); font-size: .9rem; }
+code { color: #b04d10; }
+
+@media (max-width: 720px) {
+  .hero { padding-top: 4rem; padding-bottom: 4rem; }
+  .service-grid { grid-template-columns: 1fr; }
+  .flow { align-items: center; }
+  .arrow { transform: rotate(90deg); min-width: 1.5rem; }
+}

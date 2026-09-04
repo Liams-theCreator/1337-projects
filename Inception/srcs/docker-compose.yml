@@ -1,0 +1,170 @@
+services:
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+    image: mariadb:1.0
+    container_name: mariadb
+    restart: unless-stopped
+    env_file:
+      - .env
+    secrets:
+      - db_root_password
+      - db_password
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - inception_network
+
+  redis:
+    build:
+      context: ./requirements/bonus/redis
+    image: redis:1.0
+    container_name: redis
+    restart: unless-stopped
+    env_file:
+      - .env
+    secrets:
+      - redis_password
+    networks:
+      - inception_network
+
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    image: wordpress:1.0
+    container_name: wordpress
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+      - redis
+    secrets:
+      - db_password
+      - wp_admin_password
+      - wp_standard_password
+      - redis_password
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception_network
+
+  nginx:
+    build:
+      context: ./requirements/nginx
+    image: nginx:1.0
+    container_name: nginx
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - wordpress
+      - static_site
+      - adminer
+      - portainer
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress_data:/var/www/html:ro
+    networks:
+      - inception_network
+
+  ftp:
+    build:
+      context: ./requirements/bonus/ftp
+    image: ftp:1.0
+    container_name: ftp
+    restart: unless-stopped
+    env_file:
+      - .env
+    secrets:
+      - ftp_password
+    ports:
+      - "21:21"
+      - "21000-21010:21000-21010"
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception_network
+
+  static_site:
+    build: 
+      context: ./requirements/bonus/static-site
+    image: static-site:1.0
+    container_name: static_site
+    restart: unless-stopped
+    networks:
+      - inception_network
+
+  adminer:
+    build:
+      context: ./requirements/bonus/adminer
+    image: adminer:1.0
+    container_name: adminer
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    networks:
+      - inception_network
+
+  portainer:
+    build:
+      context: ./requirements/bonus/portainer
+    image: portainer:1.0
+    container_name: portainer
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - inception_network
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    secrets:
+      - portainer_admin_password
+
+networks:
+  inception_network:
+    name: inception_network
+    driver: bridge
+
+volumes:
+  mariadb_data:
+    name: mariadb_data
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/imellali/data/mariadb
+
+  wordpress_data:
+    name: wordpress_data
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/imellali/data/wordpress
+
+  portainer_data:
+    name: portainer_data
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/imellali/data/portainer
+
+secrets:
+  db_root_password:
+    file: ../secrets/db_root_password.txt
+  db_password:
+    file: ../secrets/db_password.txt
+  wp_admin_password:
+    file: ../secrets/wp_admin_password.txt
+  wp_standard_password:
+    file: ../secrets/wp_standard_password.txt
+  redis_password:
+    file: ../secrets/redis_password.txt
+  ftp_password:
+    file: ../secrets/ftp_password.txt
+  portainer_admin_password:
+    file: ../secrets/portainer_admin_password.txt

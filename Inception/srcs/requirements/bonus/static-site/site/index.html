@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Inception project roadmap and service architecture">
+  <title>Inception Roadmap</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">· INCEPTION ·</p>
+    <h1>Containerized web infrastructure</h1>
+    <p class="hero-copy">A practical roadmap for building, validating, and extending a Docker-based WordPress platform.</p>
+  </header>
+
+  <main>
+    <section class="section intro" aria-labelledby="brief-title">
+      <p class="section-label">PROJECT BRIEF</p>
+      <h2 id="brief-title">One virtual machine. Multiple isolated services. One controlled public entrypoint.</h2>
+      <p>The Debian virtual machine runs Docker Compose. Docker creates isolated service containers and connects them through a private bridge network. Only the public NGINX gateway accepts browser HTTPS traffic.</p>
+    </section>
+
+    <section class="section architecture" aria-labelledby="architecture-title">
+      <div class="section-heading">
+        <p class="section-label">REQUEST FLOW</p>
+        <h2 id="architecture-title">How a website request moves through the stack</h2>
+      </div>
+      <div class="flow" aria-label="Browser request flow">
+        <article class="flow-card public">
+          <span>01</span>
+          <h3>Browser</h3>
+          <p>Requests the website over HTTPS.</p>
+        </article>
+        <div class="arrow" aria-hidden="true">→</div>
+        <article class="flow-card public">
+          <span>02</span>
+          <h3>NGINX</h3>
+          <p>Handles TLS and routes requests.</p>
+        </article>
+        <div class="arrow" aria-hidden="true">→</div>
+        <article class="flow-card private">
+          <span>03</span>
+          <h3>WordPress + PHP-FPM</h3>
+          <p>Executes dynamic website code.</p>
+        </article>
+        <div class="arrow" aria-hidden="true">→</div>
+        <article class="flow-card private">
+          <span>04</span>
+          <h3>MariaDB</h3>
+          <p>Stores the persistent site data.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section services" aria-labelledby="services-title">
+      <div class="section-heading">
+        <p class="section-label">SERVICE MAP</p>
+        <h2 id="services-title">What each container owns</h2>
+      </div>
+      <div class="service-grid">
+        <article><h3>MariaDB</h3><p>Persistent WordPress database.</p></article>
+        <article><h3>WordPress</h3><p>Dynamic application and PHP execution.</p></article>
+        <article><h3>NGINX</h3><p>Public HTTPS gateway and reverse proxy.</p></article>
+        <article><h3>Redis</h3><p>Temporary object cache for faster repeated reads.</p></article>
+        <article><h3>FTP</h3><p>Authenticated management of WordPress files.</p></article>
+        <article><h3>Static site</h3><p>Private static content served through NGINX.</p></article>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
